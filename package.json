@@ -1,0 +1,12 @@
+{
+  "author": {
+    "name": "joev"
+  },
+  "name": "aquietplace",
+  "description": "A small writing tool.",
+  "version": "0.1.0",
+  "dependencies": {
+    "grunt": ">=0.4.0",
+    "grunt-inline": ">=0.3.4"
+  }
+}

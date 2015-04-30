@@ -1,0 +1,27 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset='utf-8'>
+    <title>aquietplace</title>
+    <style>
+quietplace{position:absolute;top:0;left:0;right:0;bottom:0;font-family:monospace;font-size:16px;overflow-y:auto;overflow-x:hidden;padding:4em;max-width:40em;margin:0 auto;outline:0;line-height:1.4}fullscreen{position:absolute;top:3px;right:8px;font-size:22px;color:#aaa;cursor:pointer;font-family:Arial;padding:5px}fullscreen:hover{color:#000}bg:fullscreen,bg:-webkit-full-screen,bg:-moz-full-screen{background-color:rgba(255,255,255,0)}bg{position:absolute;top:0;left:0;right:0;bottom:0;display:none}intro{-webkit-opacity:0;-moz-opacity:0;opacity:0;-webkit-transition:all 1s ease;-moz-transition:all 1s ease;-ms-transition:all 1s ease;-o-transition:all 1s ease;transition:all 1s ease;font-family:monospace;font-size:48px;text-align:center;display:block;position:absolute;top:50%;left:0;right:0;margin-top:-100px}intro.bold{opacity:1}html,body{min-height:100%}title,version{display:block}version{color:#bbb;font-size:22px;margin-top:8px}
+</style>
+    <script>
+"webkitIsFullScreen"in document?(Document.prototype.cancelFullScreen=Document.prototype.webkitCancelFullScreen,HTMLElement.prototype.requestFullScreen=HTMLElement.prototype.webkitRequestFullScreen):"mozFullScreen"in document&&(Document.prototype.cancelFullScreen=document.mozCancelFullScreen,HTMLElement.prototype.requestFullScreen=HTMLElement.prototype.mozRequestFullScreen);
+</script>
+    <script>
+!function(){function e(){c||(c=setTimeout(function(){c=null,n()},2e3))}function n(){localStorage[location.pathname]=o.innerHTML}var o,c,t,l,u,i;window.onload=function(){i=!1,o=document.querySelector("quietplace"),l=document.querySelector("bg"),t=document.querySelector("fullscreen"),u=document.querySelector("intro"),u.className+="bold",o.innerHTML=localStorage[location.pathname]||"",o.onkeydown=o.onkeyup=e,t.onclick=function(){i?(i=!1,document.cancelFullScreen&&document.cancelFullScreen()):(i=!0,l.requestFullScreen&&l.requestFullScreen())},setTimeout(function(){u.style.display="none",l.style.display="block",setTimeout(function(){o.focus()})},1e3)},window.onbeforeunload=function(){n()}}();
+</script>
+  </head>
+  <body>
+    <intro>
+      <title>aquiet.place</title>
+      <version>v0.1</version>
+    </intro>
+    <bg>
+      <quietplace contenteditable='true' spellcheck='false' tabindex='0'>
+      </quietplace>
+      <fullscreen title='Fullscreen'>⤢</fullscreen>
+    </bg>
+  </body>
+</html>
