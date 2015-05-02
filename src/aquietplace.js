@@ -1,6 +1,13 @@
 (function() {
   var qp, debounce, fs, bg, intro, isFullscreen;
 
+  var filename = '';
+  window.onhashchange = function() {
+    filename = location.pathname;
+    if (location.hash.length) filename += location.hash;
+    qp.innerHTML = localStorage[filename] || '';
+  };
+
   window.onload = function() {
     isFullscreen = false;
     qp = document.querySelector('quietplace');
@@ -9,7 +16,7 @@
     intro = document.querySelector('intro');
     intro.className += 'bold';
 
-    qp.innerHTML = localStorage[location.pathname] || '';
+    window.onhashchange();
     qp.onkeydown = qp.onkeyup = inputChanged;
 
     fs.onclick = function() {
@@ -48,7 +55,7 @@
   }
 
   function saveInput() {
-    localStorage[location.pathname] = qp.innerHTML;
+    localStorage[filename] = qp.innerHTML;
   }
 
 })();
