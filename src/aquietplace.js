@@ -17,7 +17,7 @@
       // from prototype.js #stripTags
       var txt = qp.innerHTML.replace(/<\s*br\s*>/gi,"\r\n");
       txt = txt.replace(/<\w+(\s+("[^"]*"|'[^']*'|[^>])+)?>|<\/\w+>/gi, '');
-      a.setAttribute('download', (location.hash || 'aqiuetplace')+'.txt')
+      a.setAttribute('download', ((location.hash || 'aqiuetplace')+'.txt').replace(/^#/,''));
       a.setAttribute('href', 'data:text,'+encodeURI(txt));
       a.style = 'display: none';
       document.body.appendChild(a);
