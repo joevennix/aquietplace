@@ -8,7 +8,7 @@ module.exports = function(grunt) {
           cssmin: true,
           uglify: true
         },
-        src: 'src/aquietplace.html',
+        src: 'src/index.html',
         dest: 'index.html'
       }
     }
