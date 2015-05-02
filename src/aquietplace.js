@@ -8,6 +8,24 @@
     qp.innerHTML = localStorage[filename] || '';
   };
 
+  window.onkeydown = function(e) {
+    var key = e.keyCode || e.charCode || 0;
+    if (key === 83 && e.metaKey) {
+      e.preventDefault();
+      // download the content
+      var a = document.createElement('a');
+      // from prototype.js #stripTags
+      var txt = qp.innerHTML.replace(/<\s*br\s*>/gi,"\r\n");
+      txt = txt.replace(/<\w+(\s+("[^"]*"|'[^']*'|[^>])+)?>|<\/\w+>/gi, '');
+      a.setAttribute('download', (location.hash || 'aqiuetplace')+'.txt')
+      a.setAttribute('href', 'data:text,'+encodeURI(txt));
+      a.style = 'display: none';
+      document.body.appendChild(a);
+      a.click();
+      document.body.removeChild(a);
+    }
+  };
+
   window.onload = function() {
     isFullscreen = false;
     qp = document.querySelector('quietplace');
