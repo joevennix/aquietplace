@@ -24,11 +24,13 @@
         isFullscreen = true;
         if (bg.requestFullScreen) {
           bg.requestFullScreen();
+          qp.focus();
         }
       } else {
         isFullscreen = false;
         if (document.cancelFullScreen) {
           document.cancelFullScreen();
+          qp.focus();
         }
       }
     };
