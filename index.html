@@ -11,13 +11,13 @@
     <meta charset='utf-8'>
     <title>aquietplace</title>
     <style>
-quietplace{position:absolute;top:0;left:0;right:0;bottom:0;font-family:monospace;font-size:16px;overflow-y:auto;overflow-x:hidden;padding:4em;max-width:40em;margin:0 auto;outline:0;line-height:1.4}fullscreen{position:absolute;top:3px;right:8px;font-size:22px;color:#aaa;cursor:pointer;font-family:Arial;padding:5px}fullscreen:hover{color:#000}:fullscreen,:-webkit-full-screen,:-moz-full-screen,:-ms-fullscreen{background:#fff}bg{position:absolute;top:0;left:0;right:0;bottom:0;display:none}intro{-webkit-opacity:0;-moz-opacity:0;opacity:0;-webkit-transition:all 1s ease;-moz-transition:all 1s ease;-ms-transition:all 1s ease;-o-transition:all 1s ease;transition:all 1s ease;font-family:monospace;font-size:48px;text-align:center;display:block;position:absolute;top:50%;left:0;right:0;margin-top:-100px}intro.bold{opacity:1}html,body{min-height:100%}title,version{display:block}version{color:#bbb;font-size:22px;margin-top:8px}*{background:#fff}
+quietplace{position:absolute;top:0;left:0;right:0;bottom:0;font-family:monospace;font-size:16px;overflow-y:auto;overflow-x:hidden;padding:4em;max-width:40em;margin:0 auto;outline:0;line-height:1.4}fullscreen{position:absolute;top:3px;right:8px;font-size:22px;color:#aaa;cursor:pointer;font-family:Arial;padding:5px}fullscreen:hover{color:#000}:fullscreen,:-webkit-full-screen,:-moz-full-screen,:-ms-fullscreen{background:#fff}bg{position:absolute;top:0;left:0;right:0;bottom:0;display:none}intro{-webkit-opacity:0;-moz-opacity:0;opacity:0;-webkit-transition:all 1s ease;-moz-transition:all 1s ease;-ms-transition:all 1s ease;-o-transition:all 1s ease;transition:all 1s ease;font-family:monospace;font-size:48px;text-align:center;display:block;position:absolute;top:50%;left:0;right:0;margin-top:-100px}intro.bold{opacity:1}html,body{min-height:100%}title,version{display:block}version{color:#bbb;font-size:22px;margin-top:8px}*{background:#fff}@media print{quietplace{position:static;height:auto}}
 </style>
     <script>
 "webkitIsFullScreen"in document?(Document.prototype.cancelFullScreen=Document.prototype.webkitCancelFullScreen,HTMLElement.prototype.requestFullScreen=HTMLElement.prototype.webkitRequestFullScreen):"mozFullScreen"in document&&(Document.prototype.cancelFullScreen=document.mozCancelFullScreen,HTMLElement.prototype.requestFullScreen=HTMLElement.prototype.mozRequestFullScreen);
 </script>
     <script>
-!function(){function e(){t||(t=setTimeout(function(){t=null,n()},2e3))}function n(){localStorage[i]=o.innerHTML}var o,t,c,l,u,a,i="";window.onhashchange=function(){i=location.pathname,location.hash.length&&(i+=location.hash),o.innerHTML=localStorage[i]||""},window.onkeydown=function(e){var n=e.keyCode||e.charCode||0;if(83===n&&e.metaKey){e.preventDefault();var t=document.createElement("a"),c=o.innerHTML.replace(/<\s*br\s*>/gi,"\r\n");c=c.replace(/<\w+(\s+("[^"]*"|'[^']*'|[^>])+)?>|<\/\w+>/gi,""),t.setAttribute("download",((location.hash||"aqiuetplace")+".txt").replace(/^#/,"")),t.setAttribute("href","data:text,"+encodeURI(c)),t.style="display: none",document.body.appendChild(t),t.click(),document.body.removeChild(t)}},window.onload=function(){a=!1,o=document.querySelector("quietplace"),l=document.querySelector("bg"),c=document.querySelector("fullscreen"),u=document.querySelector("intro"),u.className+="bold",window.onhashchange(),o.onkeydown=o.onkeyup=e,c.onclick=function(){a?(a=!1,document.cancelFullScreen&&(document.cancelFullScreen(),o.focus())):(a=!0,l.requestFullScreen&&(l.requestFullScreen(),o.focus()))},setTimeout(function(){u.style.display="none",l.style.display="block",setTimeout(function(){o.focus()})},1e3)},window.onbeforeunload=function(){n()}}();
+!function(){function e(){t||(t=setTimeout(function(){t=null,n()},2e3))}function n(){localStorage[i]=o.innerHTML}var o,t,c,l,a,u,i="";window.onhashchange=function(){i=location.pathname,location.hash.length&&(i+=location.hash),localStorage[i]&&""!==localStorage[i]&&(o.innerHTML=localStorage[i])},window.onkeydown=function(e){var n=e.keyCode||e.charCode||0;if(83===n&&e.metaKey){e.preventDefault();var t=document.createElement("a"),c=o.innerHTML.replace(/<\s*br\s*>/gi,"\r\n");c=c.replace(/<\w+(\s+("[^"]*"|'[^']*'|[^>])+)?>|<\/\w+>/gi,""),t.setAttribute("download",((location.hash||"aqiuetplace")+".txt").replace(/^#/,"")),t.setAttribute("href","data:text,"+encodeURI(c)),t.style="display: none",document.body.appendChild(t),t.click(),document.body.removeChild(t)}},window.onload=function(){u=!1,o=document.querySelector("quietplace"),l=document.querySelector("bg"),c=document.querySelector("fullscreen"),a=document.querySelector("intro"),a.className+="bold",window.onhashchange(),o.onkeydown=o.onkeyup=e,c.onclick=function(){u?(u=!1,document.cancelFullScreen&&(document.cancelFullScreen(),o.focus())):(u=!0,l.requestFullScreen&&(l.requestFullScreen(),o.focus()))},setTimeout(function(){a.style.display="none",l.style.display="block",setTimeout(function(){o.focus()})},1e3)},window.onbeforeunload=function(){n()}}();
 </script>
   </head>
   <body>
@@ -27,6 +27,12 @@ quietplace{position:absolute;top:0;left:0;right:0;bottom:0;font-family:monospace
     </intro>
     <bg>
       <quietplace contenteditable='true' spellcheck='false' tabindex='0'>
+        <p>Just a small writing tool.</p>
+        <p>You can type things in here.</p>
+        <p>The document is autosaved into your browser cache. No data is ever sent anywhere.</p>
+        <p>To start a new document, just add a #newDocumentName to the URL.</p>
+        <p>Enjoy.</p>
+        <p><a href='http://github.com/joevennix/aquietplace'>http://github.com/joevennix/aquietplace</a></p>
       </quietplace>
       <fullscreen title='Fullscreen'>⤢</fullscreen>
     </bg>

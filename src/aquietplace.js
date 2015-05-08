@@ -5,7 +5,8 @@
   window.onhashchange = function() {
     filename = location.pathname;
     if (location.hash.length) filename += location.hash;
-    qp.innerHTML = localStorage[filename] || '';
+    if (localStorage[filename] && localStorage[filename] !== '')
+      qp.innerHTML = localStorage[filename];
   };
 
   window.onkeydown = function(e) {
