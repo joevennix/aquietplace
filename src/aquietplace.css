@@ -76,3 +76,10 @@ version {
 * {
   background: white;
 }
+
+@media print {
+  quietplace {
+    position: static;
+    height: auto;
+  }
+}
