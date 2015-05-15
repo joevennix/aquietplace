@@ -5,8 +5,10 @@
   window.onhashchange = function() {
     filename = location.pathname;
     if (location.hash.length) filename += location.hash;
-    if (localStorage[filename] && localStorage[filename] !== '')
-      qp.innerHTML = localStorage[filename];
+    try {
+      if (localStorage[filename] && localStorage[filename] !== '')
+        qp.innerHTML = localStorage[filename];
+    } catch(e) {}
   };
 
   window.onkeydown = function(e) {
@@ -76,7 +78,9 @@
   }
 
   function saveInput() {
-    localStorage[filename] = qp.innerHTML;
+    try {
+      localStorage[filename] = qp.innerHTML;
+    } catch(e) {}
   }
 
 })();

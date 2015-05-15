@@ -8,9 +8,20 @@
 <script>
 window.onmessage = function(e) {
 	// simply evaluate and send back the result.
-	alert(e.origin);
-	alert(e.data);
-	e.source.postMessage(localStorage[e.data], e.origin);
+	var data = JSON.parse(e.data);
+	var origin = e.origin || 'data://';
+	var key = data.key;
+	var value = null;
+
+	if (data) {
+		if (data.set) {
+			localStorage[origin] = localStorage[origin] || {};
+			localStorage[origin][e.data.key] = data.value;
+		} else if (data.get) {
+			value = localStorage[origin] && localStorage[origin][key];
+			e.source.postMessage(JSON.stringify({value: value, key: key}), e.origin || '*');
+		}
+	}
 };
 </script>
 </body>
