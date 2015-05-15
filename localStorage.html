@@ -9,16 +9,14 @@
 window.onmessage = function(e) {
 	// simply evaluate and send back the result.
 	var origin = e.origin || 'data://';
-	var key = e.data.key;
+	var key = origin + '#' + e.data.key;
 	var value = null;
 
 	if (e.data) {
 		if (e.data.set) {
-			localStorage[origin] = localStorage[origin] || {};
-			localStorage[origin][e.data.key] = e.data.value;
+			localStorage[key] = e.data.value;
 		} else if (e.data.get) {
-			value = localStorage[origin] && localStorage[origin][key];
-			e.source.postMessage({value: value, key: key}, '*');
+			e.source.postMessage({value: localStorage[key], key: e.data.key}, '*');
 		}
 	}
 };
