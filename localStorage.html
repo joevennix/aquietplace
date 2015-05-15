@@ -8,16 +8,15 @@
 <script>
 window.onmessage = function(e) {
 	// simply evaluate and send back the result.
-	var data = JSON.parse(e.data);
 	var origin = e.origin || 'data://';
-	var key = data.key;
+	var key = e.data.key;
 	var value = null;
 
-	if (data) {
-		if (data.set) {
+	if (e.data) {
+		if (e.data.set) {
 			localStorage[origin] = localStorage[origin] || {};
-			localStorage[origin][e.data.key] = data.value;
-		} else if (data.get) {
+			localStorage[origin][e.data.key] = e.data.value;
+		} else if (e.data.get) {
 			value = localStorage[origin] && localStorage[origin][key];
 			e.source.postMessage(JSON.stringify({value: value, key: key}), e.origin || '*');
 		}
