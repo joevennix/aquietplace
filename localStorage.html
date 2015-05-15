@@ -1,0 +1,17 @@
+<!--
+  A localStorage shim for schemes that don't support it,
+  like data: in Chrome.
+-->
+<!doctype html>
+<html>
+<body>
+<script>
+window.onmessage = function(e) {
+	// simply evaluate and send back the result.
+	alert(e.origin);
+	alert(e.data);
+	e.source.postMessage(localStorage[e.data], e.origin);
+};
+</script>
+</body>
+</html>
