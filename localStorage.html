@@ -18,7 +18,7 @@ window.onmessage = function(e) {
 			localStorage[origin][e.data.key] = e.data.value;
 		} else if (e.data.get) {
 			value = localStorage[origin] && localStorage[origin][key];
-			e.source.postMessage(JSON.stringify({value: value, key: key}), e.origin || '*');
+			e.source.postMessage({value: value, key: key}, '*');
 		}
 	}
 };
